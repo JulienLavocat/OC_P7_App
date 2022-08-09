@@ -16,13 +16,9 @@ export default function Post({
 	createdAt,
 	userName,
 	userImage,
-	dislikes,
 	likes,
 	hasLiked,
-	hasDisliked,
 }: PostModel) {
-	const { t } = useTranslation();
-
 	return (
 		<div className="bg-white rounded-lg shadow p-3">
 			<div className="flex gap-4">
@@ -45,16 +41,6 @@ export default function Post({
 						/>
 					}
 					text="post.action.like"
-				/>
-				<TooltipButton
-					content={dislikes}
-					icon={
-						<FaRegThumbsDown
-							className={hasDisliked ? "text-error" : ""}
-							size={16}
-						/>
-					}
-					text="post.action.dislike"
 				/>
 			</div>
 		</div>

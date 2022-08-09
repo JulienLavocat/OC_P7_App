@@ -6,7 +6,5 @@ export interface PostModel {
 	content: string;
 	image?: string;
 	hasLiked: boolean;
-	hasDisliked: boolean;
 	likes: number;
-	dislikes: number;
 }

@@ -11,9 +11,7 @@ const posts: PostModel[] = [
 		userImage:
 			"https://avatars.dicebear.com/api/initials/julienlavocat.svg",
 		createdAt: DateTime.utc().toJSDate(),
-		dislikes: 0,
 		likes: 0,
-		hasDisliked: true,
 		hasLiked: true,
 	},
 	{
@@ -23,9 +21,7 @@ const posts: PostModel[] = [
 		userImage:
 			"https://avatars.dicebear.com/api/initials/julienlavocat.svg",
 		createdAt: DateTime.utc().minus({ seconds: 30 }).toJSDate(),
-		dislikes: 0,
 		likes: 0,
-		hasDisliked: false,
 		hasLiked: true,
 	},
 	{
@@ -35,9 +31,7 @@ const posts: PostModel[] = [
 		userImage:
 			"https://avatars.dicebear.com/api/initials/julienlavocat.svg",
 		createdAt: DateTime.utc().minus({ minutes: 34 }).toJSDate(),
-		dislikes: 0,
 		likes: 0,
-		hasDisliked: false,
 		hasLiked: true,
 	},
 	{
@@ -48,9 +42,7 @@ const posts: PostModel[] = [
 		userImage:
 			"https://avatars.dicebear.com/api/initials/julienlavocat.svg",
 		createdAt: DateTime.utc().minus({ hours: 2 }).toJSDate(),
-		dislikes: 0,
 		likes: 0,
-		hasDisliked: false,
 		hasLiked: true,
 	},
 	{
@@ -60,9 +52,7 @@ const posts: PostModel[] = [
 		userImage:
 			"https://avatars.dicebear.com/api/initials/julienlavocat.svg",
 		createdAt: DateTime.utc().minus({ days: 2 }).toJSDate(),
-		dislikes: 0,
 		likes: 0,
-		hasDisliked: false,
 		hasLiked: true,
 	},
 	{
@@ -72,16 +62,9 @@ const posts: PostModel[] = [
 		userImage:
 			"https://avatars.dicebear.com/api/initials/julienlavocat.svg",
 		createdAt: DateTime.utc().minus({ year: 2 }).toJSDate(),
-		dislikes: 0,
 		likes: 0,
-		hasDisliked: false,
 		hasLiked: true,
 	},
-	// {
-	// 	content: "Hello there",
-	// 	userName: "julienlavocat",
-	// 	createdAt: new Date(),
-	// },
 ];
 
 export default function Feed() {
