@@ -1,20 +1,29 @@
-import { Avatar, Button } from "react-daisyui";
+import { Avatar, Button, Modal } from "react-daisyui";
 import { FaEllipsisH, FaRegThumbsUp, FaThumbsUp } from "react-icons/fa";
 import { PostModel } from "../../../models/post";
 import formatDate from "../../../utils/formatDate";
 import TooltipButton from "../../elements/TooltipButton";
+
+export type PostProps = PostModel & {
+	hasManagementPermission: boolean;
+	onEdit: () => void;
+	onLike: (postId: string) => void;
+};
 
 export default function Post({
 	content,
 	createdAt,
 	userName,
 	userImage,
+	userId,
 	likes,
 	hasLiked,
 	image,
-}: PostModel) {
-	const onLike = () => {};
-
+	postId,
+	onEdit,
+	onLike,
+	hasManagementPermission,
+}: PostProps) {
 	return (
 		<div className="bg-white rounded-lg shadow p-3">
 			<div className="flex gap-4">
@@ -22,7 +31,7 @@ export default function Post({
 				<div className="flex-grow">
 					<p>
 						<span className="font-semibold">{userName}</span>
-						{" · " + formatDate(createdAt)}
+						{` @${userId} · ${formatDate(createdAt)}`}
 					</p>
 					<p className="break-words mt-2">{content}</p>
 					{image && (
@@ -33,12 +42,15 @@ export default function Post({
 					)}
 				</div>
 
-				<Button
-					className="min-h-0 h-fit w-fit p-1"
-					color="ghost"
-					shape="circle">
-					<FaEllipsisH size={22} className="opacity-70" />
-				</Button>
+				{hasManagementPermission && (
+					<Button
+						className="min-h-0 h-fit w-fit p-1"
+						color="ghost"
+						shape="circle"
+						onClick={onEdit}>
+						<FaEllipsisH size={22} className="opacity-70" />
+					</Button>
+				)}
 			</div>
 			<div className="flex items-center gap-2 justify-end mt-1">
 				<TooltipButton
@@ -51,7 +63,7 @@ export default function Post({
 						)
 					}
 					text="post.action.like"
-					onClick={onLike}
+					onClick={() => onLike(postId)}
 				/>
 			</div>
 		</div>

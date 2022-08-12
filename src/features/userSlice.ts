@@ -4,6 +4,7 @@ export interface UserType {
 	id: string;
 	name: string;
 	image: string;
+	role: string;
 }
 
 export type UserState = UserType | null;

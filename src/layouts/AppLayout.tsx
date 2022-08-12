@@ -13,7 +13,8 @@ export default function AppLayout() {
 				setUser({
 					id: "julienlavocat",
 					name: "Julien Lavocat",
-					image: "https://avatars.dicebear.com/api/initials/julienlavocat.svg",
+					image: "https://dicebear.julienlavocat.me/api/initials/julienlavocat.svg",
+					role: "user",
 				})
 			);
 		}
