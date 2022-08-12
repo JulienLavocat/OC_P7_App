@@ -8,7 +8,7 @@ export default function AddPost() {
 	const [textContent, setTextContent] = useState("");
 	return (
 		<div className="flex flex-col bg-base-100 rounded-lg shadow  p-2">
-			<div className="flex flex-row items-center gap-2">
+			<div className="flex flex-row gap-2">
 				<Avatar
 					size="sm"
 					src="https://avatars.dicebear.com/api/initials/julienlavocat.svg"
@@ -28,8 +28,8 @@ export default function AddPost() {
 					color="primary"
 					className="rounded-lg gap-2"
 					size="sm"
-					disabled={textContent.length < 3}>
-					Send
+					disabled={textContent.length < 1}>
+					{t("addpost.send")}
 					<FaPaperPlane />
 				</Button>
 			</div>

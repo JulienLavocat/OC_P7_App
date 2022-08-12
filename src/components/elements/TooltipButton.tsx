@@ -7,10 +7,12 @@ export default function TooltipButton({
 	text,
 	content,
 	icon,
+	onClick,
 }: {
 	text: string;
 	content: string | number;
 	icon: JSX.Element;
+	onClick?: () => void;
 }) {
 	const { t } = useTranslation();
 
@@ -19,8 +21,9 @@ export default function TooltipButton({
 			<Button
 				color="ghost"
 				shape="circle"
-				className="gap-1 w-fit items-center"
-				size="sm">
+				className="gap-1 w-fit items-center p-1"
+				size="sm"
+				onClick={onClick}>
 				{icon} {content}
 			</Button>
 		</Tooltip>

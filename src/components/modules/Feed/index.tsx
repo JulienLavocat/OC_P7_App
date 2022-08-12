@@ -23,6 +23,7 @@ const posts: PostModel[] = [
 		createdAt: DateTime.utc().minus({ seconds: 30 }).toJSDate(),
 		likes: 0,
 		hasLiked: true,
+		image: `https://loremflickr.com/514/685/all?cacheBust=${Math.random()}`,
 	},
 	{
 		postId: "3",
@@ -33,6 +34,7 @@ const posts: PostModel[] = [
 		createdAt: DateTime.utc().minus({ minutes: 34 }).toJSDate(),
 		likes: 0,
 		hasLiked: true,
+		image: `https://loremflickr.com/640/360/all?cacheBust=${Math.random()}`,
 	},
 	{
 		postId: "4",
@@ -43,7 +45,7 @@ const posts: PostModel[] = [
 			"https://avatars.dicebear.com/api/initials/julienlavocat.svg",
 		createdAt: DateTime.utc().minus({ hours: 2 }).toJSDate(),
 		likes: 0,
-		hasLiked: true,
+		hasLiked: false,
 	},
 	{
 		postId: "5",
@@ -53,7 +55,8 @@ const posts: PostModel[] = [
 			"https://avatars.dicebear.com/api/initials/julienlavocat.svg",
 		createdAt: DateTime.utc().minus({ days: 2 }).toJSDate(),
 		likes: 0,
-		hasLiked: true,
+		hasLiked: false,
+		image: `https://loremflickr.com/1280/720/all?cacheBust=${Math.random()}`,
 	},
 	{
 		postId: "6",
@@ -63,7 +66,8 @@ const posts: PostModel[] = [
 			"https://avatars.dicebear.com/api/initials/julienlavocat.svg",
 		createdAt: DateTime.utc().minus({ year: 2 }).toJSDate(),
 		likes: 0,
-		hasLiked: true,
+		hasLiked: false,
+		image: `https://loremflickr.com/1920/1080/all?cacheBust=${Math.random()}`,
 	},
 ];
 
