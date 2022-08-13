@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
+import Navbar from "../components/modules/Navbar";
 import { setUser } from "../features/userSlice";
 import { useAppDispatch, useAppSelector } from "../hooks/useAppDispatch";
 
@@ -21,5 +22,12 @@ export default function AppLayout() {
 		return () => {};
 	}, [user]);
 
-	return <Outlet />;
+	return (
+		<>
+			<div className="grid grid-rows-[1fr_3.5rem] h-screen max-h-screen bg-base-200">
+				<Outlet />
+			</div>
+			<Navbar />
+		</>
+	);
 }
