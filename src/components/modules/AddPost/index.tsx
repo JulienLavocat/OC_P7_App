@@ -24,19 +24,13 @@ export default function AddPost() {
 
 	const onImageSelected = (file: File | null) => {
 		setSelectedImage(file);
-	};
 
-	// Allow file to be previewed in an <img>
-	useEffect(() => {
-		console.log(selectedImage);
-
+		// Allow file to be previewed in an <img>
+		selectedImagePreview && URL.revokeObjectURL(selectedImagePreview);
 		setSelectedImagePreview(
 			selectedImage ? URL.createObjectURL(selectedImage) : null
 		);
-		return () => {
-			selectedImagePreview && URL.revokeObjectURL(selectedImagePreview);
-		};
-	}, [selectedImage]);
+	};
 
 	return (
 		<div className="flex flex-col bg-base-100 rounded-lg shadow p-2">

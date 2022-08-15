@@ -15,7 +15,7 @@ export default function AppLayout() {
 					id: "julienlavocat",
 					name: "Julien Lavocat",
 					image: "https://dicebear.julienlavocat.me/api/initials/julienlavocat.svg",
-					role: "user",
+					role: "admin",
 				})
 			);
 		}

@@ -1,7 +1,36 @@
 {
-	"addpost.send": "Send",
-	"addpost.placeholder": "What's on your mind ?",
-	"post.date.now": "Now",
-	"post.action.like": "Like",
-	"post.action.dislike": "Dislike"
+	"addpost": {
+		"send": "Send",
+		"placeholder": "What's on your mind ?"
+	},
+	"post": {
+		"date": {
+			"now": "Now"
+		},
+		"like": "Like",
+		"dislike": "Dislike"
+	},
+	"login": {
+		"title": "Groupomania | Login",
+		"fields": {
+			"email": "Email",
+			"password": "Password"
+		},
+		"submit": "Log in",
+		"register": "Need an account ? Register",
+		"required": "{{field}} is required"
+	},
+	"register": {
+		"title": "Groupomania | Register",
+		"fields": {
+			"email": "Email",
+			"password": "Password",
+			"firstname": "Firstname",
+			"lastname": "Lastname",
+			"username": "Username"
+		},
+		"submit": "Register",
+		"register": "Already have an account ? Login",
+		"required": "{{field}} is required"
+	}
 }
