@@ -7,8 +7,10 @@
 		"date": {
 			"now": "Now"
 		},
-		"like": "Like",
-		"dislike": "Dislike"
+		"action": {
+			"like": "Like",
+			"dislike": "Dislike"
+		}
 	},
 	"login": {
 		"title": "Groupomania | Login",
@@ -25,9 +27,8 @@
 		"fields": {
 			"email": "Email",
 			"password": "Password",
-			"firstname": "Firstname",
-			"lastname": "Lastname",
-			"username": "Username"
+			"firstName": "Firstname",
+			"lastName": "Lastname"
 		},
 		"submit": "Register",
 		"register": "Already have an account ? Login",

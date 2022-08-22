@@ -15,7 +15,7 @@ import IconFileInput from "../../elements/IconFileInput";
 
 export default function AddPost() {
 	const { t } = useTranslation();
-	const user = useSelector((state: RootState) => state.user);
+	const image = useSelector((state: RootState) => state.user?.user.image);
 	const [textContent, setTextContent] = useState("");
 	const [selectedImage, setSelectedImage] = useState<File | null>(null);
 	const [selectedImagePreview, setSelectedImagePreview] = useState<
@@ -35,7 +35,7 @@ export default function AddPost() {
 	return (
 		<div className="flex flex-col bg-base-100 rounded-lg shadow p-2">
 			<div className="flex flex-row gap-2">
-				<Avatar size="sm" src={user?.image} shape="circle" />
+				<Avatar size="sm" src={image} shape="circle" />
 				<Textarea
 					className="flex-grow rounded-2xl"
 					placeholder={t("addpost.placeholder")}

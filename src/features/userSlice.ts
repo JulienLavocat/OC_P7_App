@@ -1,10 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface UserType {
-	id: string;
-	name: string;
-	image: string;
-	role: string;
+	token: string;
+	user: {
+		id: number;
+		firstName: string;
+		lastName: string;
+		displayName: string;
+		image: string;
+		role: string;
+	};
 }
 
 export type UserState = UserType | null;
