@@ -21,6 +21,7 @@ export default function IconFileInput({
 				color="ghost"
 				shape="circle"
 				size="sm"
+				type="button"
 				disabled={disabled}
 				onClick={onAddImageClicked}>
 				<FaRegFileImage size={22} />

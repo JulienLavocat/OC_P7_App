@@ -1,22 +1,15 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { Avatar, Button, Textarea } from "react-daisyui";
 import { useTranslation } from "react-i18next";
-import {
-	FaCross,
-	FaPaperPlane,
-	FaRegFileImage,
-	FaTrash,
-	FaTrashAlt,
-} from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { FaPaperPlane, FaTrashAlt } from "react-icons/fa";
+import { useAppSelector } from "../../../hooks/useAppDispatch";
 import { PostService } from "../../../services/postService";
-import { RootState } from "../../../store";
 import IconButton from "../../elements/IconButton";
 import IconFileInput from "../../elements/IconFileInput";
 
-export default function AddPost() {
+export default function AddPost({ onAdd }: { onAdd: () => void }) {
 	const { t } = useTranslation();
-	const image = useSelector((state: RootState) => state.user?.user.image);
+	const image = useAppSelector((state) => state.user?.user.image);
 	const [textContent, setTextContent] = useState("");
 	const [selectedImage, setSelectedImage] = useState<File | null>(null);
 	const [selectedImagePreview, setSelectedImagePreview] = useState<
@@ -29,9 +22,7 @@ export default function AddPost() {
 
 		// Allow file to be previewed in an <img>
 		selectedImagePreview && URL.revokeObjectURL(selectedImagePreview);
-		setSelectedImagePreview(
-			selectedImage ? URL.createObjectURL(selectedImage) : null
-		);
+		setSelectedImagePreview(file ? URL.createObjectURL(file) : null);
 	};
 
 	const onSubmit = async (e: FormEvent) => {
@@ -39,10 +30,13 @@ export default function AddPost() {
 		setIsSubmitting(true);
 
 		try {
-			const res = await PostService.createPost(
+			await PostService.createPost(
 				textContent,
 				selectedImage || undefined
 			);
+			setTextContent("");
+			onImageSelected(null);
+			onAdd();
 		} catch (error) {
 			console.error(error);
 		} finally {
@@ -57,6 +51,7 @@ export default function AddPost() {
 			<div className="flex flex-row gap-2">
 				<Avatar size="sm" src={image} shape="circle" />
 				<Textarea
+					value={textContent}
 					className="flex-grow rounded-2xl"
 					placeholder={t("addpost.placeholder")}
 					onChange={(e) => setTextContent(e.target.value)}

@@ -30,4 +30,28 @@ export class PostService {
 
 		return res.data;
 	}
+
+	static async like(postId: number) {
+		const res = await toastifyAsyncError(
+			postsApi.like(postId, {
+				headers: {
+					Authorization: "Bearer " + store.getState().user?.token,
+				},
+			})
+		);
+
+		return res.data;
+	}
+
+	static async dislike(postId: number) {
+		const res = await toastifyAsyncError(
+			postsApi.dislike(postId, {
+				headers: {
+					Authorization: "Bearer " + store.getState().user?.token,
+				},
+			})
+		);
+
+		return res.data;
+	}
 }
