@@ -3,17 +3,12 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Navbar from "../components/modules/Navbar";
 import { useAppSelector } from "../hooks/useAppDispatch";
+import useEnsureLogin from "../hooks/useEnsureLogin";
 
 export default function AppLayout() {
-	const user = useAppSelector((state) => state.user);
-	const navigate = useNavigate();
+	const { isLoading } = useEnsureLogin();
 
-	useEffect(() => {
-		if (!user) {
-			navigate("/auth/login");
-		}
-		return () => {};
-	}, [user]);
+	if (isLoading) return <></>;
 
 	return (
 		<>

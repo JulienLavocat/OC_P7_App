@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { Avatar, Button, Textarea } from "react-daisyui";
 import { useTranslation } from "react-i18next";
 import {
@@ -9,6 +9,7 @@ import {
 	FaTrashAlt,
 } from "react-icons/fa";
 import { useSelector } from "react-redux";
+import { PostService } from "../../../services/postService";
 import { RootState } from "../../../store";
 import IconButton from "../../elements/IconButton";
 import IconFileInput from "../../elements/IconFileInput";
@@ -21,6 +22,7 @@ export default function AddPost() {
 	const [selectedImagePreview, setSelectedImagePreview] = useState<
 		string | null
 	>(null);
+	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	const onImageSelected = (file: File | null) => {
 		setSelectedImage(file);
@@ -32,8 +34,26 @@ export default function AddPost() {
 		);
 	};
 
+	const onSubmit = async (e: FormEvent) => {
+		e.preventDefault();
+		setIsSubmitting(true);
+
+		try {
+			const res = await PostService.createPost(
+				textContent,
+				selectedImage || undefined
+			);
+		} catch (error) {
+			console.error(error);
+		} finally {
+			setIsSubmitting(false);
+		}
+	};
+
 	return (
-		<div className="flex flex-col bg-base-100 rounded-lg shadow p-2">
+		<form
+			className="flex flex-col bg-base-100 rounded-lg shadow p-2"
+			onSubmit={onSubmit}>
 			<div className="flex flex-row gap-2">
 				<Avatar size="sm" src={image} shape="circle" />
 				<Textarea
@@ -46,6 +66,7 @@ export default function AddPost() {
 				<div className="self-center mt-2 relative group">
 					<div className="flex items-center justify-center h-full w-full invisible absolute hover:bg-black hover:bg-opacity-40 group-hover:visible">
 						<IconButton
+							disabled={isSubmitting}
 							icon={
 								<FaTrashAlt
 									className="text-red-500"
@@ -62,16 +83,23 @@ export default function AddPost() {
 				</div>
 			)}
 			<div className="flex justify-between items-center mt-2 ml-2">
-				<IconFileInput onChange={onImageSelected} />
+				<IconFileInput
+					onChange={onImageSelected}
+					disabled={isSubmitting}
+				/>
 				<Button
+					type="submit"
 					color="primary"
 					className="rounded-lg gap-2"
 					size="sm"
-					disabled={!selectedImage && textContent.length < 1}>
+					disabled={
+						isSubmitting ||
+						(!selectedImage && textContent.length < 1)
+					}>
 					{t("addpost.send")}
 					<FaPaperPlane />
 				</Button>
 			</div>
-		</div>
+		</form>
 	);
 }

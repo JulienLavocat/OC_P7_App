@@ -1,4 +1,3 @@
-import { toast } from "react-toastify";
 import {
 	AuthenticationApi,
 	Configuration,
@@ -21,6 +20,11 @@ export class AuthService {
 
 	public static async login(dto: LoginDto) {
 		const r = await toastifyAsyncError(api.login(dto));
+		return r.data;
+	}
+
+	public static async refreshToken(token: string) {
+		const r = await toastifyAsyncError(api.refreshToken({ token }));
 		return r.data;
 	}
 }

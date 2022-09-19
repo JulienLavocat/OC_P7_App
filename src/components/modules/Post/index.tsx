@@ -1,6 +1,6 @@
 import { Avatar, Button, Modal } from "react-daisyui";
 import { FaEllipsisH, FaRegThumbsUp, FaThumbsUp } from "react-icons/fa";
-import { PostModel } from "../../../models/post";
+import { Post as PostModel } from "../../../api";
 import formatDate from "../../../utils/formatDate";
 import TooltipButton from "../../elements/TooltipButton";
 
@@ -8,6 +8,9 @@ export type PostProps = PostModel & {
 	hasManagementPermission: boolean;
 	onEdit: () => void;
 	onLike: (postId: string) => void;
+	userName: string;
+	userImage: string;
+	hasLiked: boolean;
 };
 
 export default function Post({
@@ -19,7 +22,7 @@ export default function Post({
 	likes,
 	hasLiked,
 	image,
-	postId,
+	id,
 	onEdit,
 	onLike,
 	hasManagementPermission,
@@ -31,12 +34,12 @@ export default function Post({
 				<div className="flex-grow">
 					<p>
 						<span className="font-semibold">{userName}</span>
-						{` @${userId} · ${formatDate(createdAt)}`}
+						{` @${userId} · ${formatDate(new Date(createdAt))}`}
 					</p>
 					<p className="break-words mt-2">{content}</p>
 					{image && (
 						<img
-							src={image}
+							src={`http://localhost:3000/${image}`}
 							className="max-w-full rounded-lg mt-2 shadow object-cover max-h-[680px]"
 						/>
 					)}
@@ -63,7 +66,7 @@ export default function Post({
 						)
 					}
 					text="post.action.like"
-					onClick={() => onLike(postId)}
+					onClick={() => onLike(id.toString(10))}
 				/>
 			</div>
 		</div>

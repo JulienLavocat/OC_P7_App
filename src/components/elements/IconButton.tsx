@@ -4,10 +4,12 @@ import { Button } from "react-daisyui";
 export default function IconButton({
 	className,
 	icon,
+	disabled,
 	onClick,
 }: {
 	className?: string;
 	icon: JSX.Element;
+	disabled?: boolean;
 	onClick?: () => void;
 }) {
 	return (
@@ -16,6 +18,7 @@ export default function IconButton({
 			shape="circle"
 			className={"gap-1 w-fit items-center p-1 " + className}
 			size="sm"
+			disabled={disabled}
 			onClick={onClick}>
 			{icon}
 		</Button>
