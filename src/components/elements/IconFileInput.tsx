@@ -23,7 +23,8 @@ export default function IconFileInput({
 				size="sm"
 				type="button"
 				disabled={disabled}
-				onClick={onAddImageClicked}>
+				onClick={onAddImageClicked}
+			>
 				<FaRegFileImage size={22} />
 			</Button>
 			<input

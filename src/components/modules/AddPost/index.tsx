@@ -30,10 +30,7 @@ export default function AddPost({ onAdd }: { onAdd: () => void }) {
 		setIsSubmitting(true);
 
 		try {
-			await PostService.createPost(
-				textContent,
-				selectedImage || undefined
-			);
+			await PostService.createPost(textContent, selectedImage || undefined);
 			setTextContent("");
 			onImageSelected(null);
 			onAdd();
@@ -47,7 +44,8 @@ export default function AddPost({ onAdd }: { onAdd: () => void }) {
 	return (
 		<form
 			className="flex flex-col bg-base-100 rounded-lg shadow p-2"
-			onSubmit={onSubmit}>
+			onSubmit={onSubmit}
+		>
 			<div className="flex flex-row gap-2">
 				<Avatar size="sm" src={image} shape="circle" />
 				<Textarea
@@ -71,26 +69,18 @@ export default function AddPost({ onAdd }: { onAdd: () => void }) {
 							}
 						/>
 					</div>
-					<img
-						src={selectedImagePreview}
-						className="max-h-64 w-min -z-10"
-					/>
+					<img src={selectedImagePreview} className="max-h-64 w-min -z-10" />
 				</div>
 			)}
 			<div className="flex justify-between items-center mt-2 ml-2">
-				<IconFileInput
-					onChange={onImageSelected}
-					disabled={isSubmitting}
-				/>
+				<IconFileInput onChange={onImageSelected} disabled={isSubmitting} />
 				<Button
 					type="submit"
 					color="primary"
 					className="rounded-lg gap-2"
 					size="sm"
-					disabled={
-						isSubmitting ||
-						(!selectedImage && textContent.length < 1)
-					}>
+					disabled={isSubmitting || (!selectedImage && textContent.length < 1)}
+				>
 					{t("addpost.send")}
 					<FaPaperPlane />
 				</Button>

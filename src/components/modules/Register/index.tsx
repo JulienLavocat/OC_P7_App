@@ -81,7 +81,8 @@ export default function Register() {
 				<Button
 					type="submit"
 					className="mt-2 rounded-lg"
-					disabled={isSubmitting}>
+					disabled={isSubmitting}
+				>
 					{t("register.submit")}
 				</Button>
 				<Link to="/auth/login" className="hover:underline">

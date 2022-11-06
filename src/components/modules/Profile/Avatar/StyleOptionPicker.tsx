@@ -25,9 +25,8 @@ export default function StyleOptionPicker({
 			<div className="flex justify-between w-full items-center">
 				<div
 					className="cursor-pointer hover:bg-neutral rounded-full hover:bg-opacity-30 p-2 select-none"
-					onClick={() =>
-						setCurrentIndex((c) => (c + 1) % options.length)
-					}>
+					onClick={() => setCurrentIndex((c) => (c + 1) % options.length)}
+				>
 					<FaArrowLeft />
 				</div>
 				<p>{options[currentIndex]}</p>
@@ -35,11 +34,10 @@ export default function StyleOptionPicker({
 					className="cursor-pointer hover:bg-neutral rounded-full hover:bg-opacity-30 p-1 select-none"
 					onClick={() =>
 						setCurrentIndex((c) =>
-							c <= 0
-								? options.length - 1
-								: (c - 1) % options.length
+							c <= 0 ? options.length - 1 : (c - 1) % options.length
 						)
-					}>
+					}
+				>
 					<FaArrowRight />
 				</div>
 			</div>

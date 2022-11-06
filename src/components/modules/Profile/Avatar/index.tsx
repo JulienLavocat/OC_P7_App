@@ -51,7 +51,8 @@ export default function Avatar() {
 				<Tabs
 					value={currentCategory}
 					onChange={setCurrentCategory}
-					className="border-b h-10 items-center">
+					className="border-b h-10 items-center"
+				>
 					{Object.keys(styles).map((e) => (
 						<Tabs.Tab value={e} key={e} className="flex-grow">
 							{e}

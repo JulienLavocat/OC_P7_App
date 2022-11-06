@@ -53,9 +53,7 @@ export default function Post({
 				<div className="flex-grow">
 					<p>
 						<span className="font-semibold">{userName}</span>
-						{` @${userDisplayId} · ${formatDate(
-							new Date(createdAt)
-						)}`}
+						{` @${userDisplayId} · ${formatDate(new Date(createdAt))}`}
 					</p>
 					<p className="break-words mt-2">{content}</p>
 					{image && (
@@ -71,7 +69,8 @@ export default function Post({
 						className="min-h-0 h-fit w-fit p-1"
 						color="ghost"
 						shape="circle"
-						onClick={onEdit}>
+						onClick={onEdit}
+					>
 						<FaEllipsisH size={22} className="opacity-70" />
 					</Button>
 				)}

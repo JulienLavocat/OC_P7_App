@@ -20,8 +20,7 @@ export default function useEnsureLogin() {
 			}
 
 			try {
-				const refreshedToken = (await AuthService.refreshToken(token))
-					.token;
+				const refreshedToken = (await AuthService.refreshToken(token)).token;
 				const profile = await UsersService.getProfile(refreshedToken);
 				dispatch(
 					setUser({

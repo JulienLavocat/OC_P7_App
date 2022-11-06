@@ -33,10 +33,7 @@
 		"gray",
 		"silverGray"
 	],
-	"style": [
-		"transparent",
-		"circle"
-	],
+	"style": ["transparent", "circle"],
 	"top": [
 		"longHair",
 		"shortHair",
@@ -160,15 +157,7 @@
 		"twinkle",
 		"vomit"
 	],
-	"skin": [
-		"tanned",
-		"yellow",
-		"pale",
-		"light",
-		"brown",
-		"darkBrown",
-		"black"
-	],
+	"skin": ["tanned", "yellow", "pale", "light", "brown", "darkBrown", "black"],
 	"clotheGraphics": [
 		"skullOutline",
 		"skull",

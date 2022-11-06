@@ -23,7 +23,8 @@ export default function TooltipButton({
 				shape="circle"
 				className="gap-1 w-fit items-center p-1"
 				size="sm"
-				onClick={onClick}>
+				onClick={onClick}
+			>
 				{icon} {content}
 			</Button>
 		</Tooltip>

@@ -21,6 +21,7 @@ const Feed = forwardRef<FeedHandle>(({}, ref) => {
 		return () => {};
 	}, []);
 
+	// Allows to trigger a refresh when adding a Post (AddPost component)
 	useImperativeHandle(ref, () => ({
 		refreshFeed() {
 			refreshFeed();

@@ -136,15 +136,7 @@
 			"twinkle",
 			"vomit"
 		],
-		"skin": [
-			"tanned",
-			"yellow",
-			"pale",
-			"light",
-			"brown",
-			"darkBrown",
-			"black"
-		]
+		"skin": ["tanned", "yellow", "pale", "light", "brown", "darkBrown", "black"]
 	},
 	"clothes": {
 		"clothes": [

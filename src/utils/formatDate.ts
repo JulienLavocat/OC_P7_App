@@ -16,8 +16,7 @@ export default function formatDate(date: Date) {
 
 	if (diff.hours && diff.hours < 24) return `${Math.abs(diff.hours)}h`;
 
-	if (diff.minutes && diff.minutes < 60)
-		return `${Math.abs(diff.minutes)}min`;
+	if (diff.minutes && diff.minutes < 60) return `${Math.abs(diff.minutes)}min`;
 
 	if (diff.seconds && diff.seconds > 10)
 		return `${Math.round(Math.abs(diff.seconds))}s`;

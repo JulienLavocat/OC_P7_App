@@ -19,7 +19,8 @@ export default function IconButton({
 			className={"gap-1 w-fit items-center p-1 " + className}
 			size="sm"
 			disabled={disabled}
-			onClick={onClick}>
+			onClick={onClick}
+		>
 			{icon}
 		</Button>
 	);
