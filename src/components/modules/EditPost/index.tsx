@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { Button } from "react-daisyui";
+import React, { FormEvent, useState } from "react";
+import { Button, Textarea } from "react-daisyui";
+import { useTranslation } from "react-i18next";
 import { FaPen, FaTrash } from "react-icons/fa";
 import { Post } from "../../../api";
 import { PostService } from "../../../services/postService";
@@ -12,8 +13,17 @@ export interface EditPostProps {
 export default function EditPost({ post, refreshFeed }: EditPostProps) {
 	const [isDeleting, setIsDeleting] = useState(false);
 	const [isEditing, setIsEditing] = useState(false);
+	const [textContent, setTextContent] = useState(post.content);
+	const { t } = useTranslation();
 
-	const submitEditedPost = () => {};
+	const submitEditedPost = async (e: FormEvent) => {
+		e.preventDefault();
+
+		setIsEditing(true);
+		await PostService.update(post.id, { content: textContent });
+		setIsEditing(false);
+		refreshFeed && refreshFeed();
+	};
 	const removePost = async () => {
 		setIsDeleting(true);
 		await PostService.delete(post.id);
@@ -26,7 +36,14 @@ export default function EditPost({ post, refreshFeed }: EditPostProps) {
 	return (
 		<div>
 			<form onSubmit={submitEditedPost}>
-				<div></div>
+				<div className="w-full mb-8">
+					<Textarea
+						value={textContent}
+						className="w-full rounded-2xl"
+						placeholder={t("addpost.placeholder")}
+						onChange={(e) => setTextContent(e.target.value)}
+					/>
+				</div>
 				<div className="flex justify-between">
 					<Button
 						color="error"
@@ -44,10 +61,9 @@ export default function EditPost({ post, refreshFeed }: EditPostProps) {
 						color="primary"
 						startIcon={<FaPen />}
 						variant="outline"
-						type="button"
+						type="submit"
 						className="rounded-lg"
 						disabled={buttonsDisabled}
-						onClick={removePost}
 						loading={isEditing}
 					>
 						Edit post

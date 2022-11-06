@@ -179,6 +179,19 @@ export interface RegisterDto {
 /**
  * 
  * @export
+ * @interface UpdatePostDto
+ */
+export interface UpdatePostDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdatePostDto
+     */
+    'content': string;
+}
+/**
+ * 
+ * @export
  * @interface User
  */
 export interface User {
@@ -500,6 +513,10 @@ export const PostsApiAxiosParamCreator = function (configuration?: Configuration
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -578,7 +595,7 @@ export const PostsApiAxiosParamCreator = function (configuration?: Configuration
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -650,7 +667,7 @@ export const PostsApiAxiosParamCreator = function (configuration?: Configuration
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -663,6 +680,50 @@ export const PostsApiAxiosParamCreator = function (configuration?: Configuration
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary 
+         * @param {number} postId 
+         * @param {UpdatePostDto} updatePostDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        update: async (postId: number, updatePostDto: UpdatePostDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'postId' is not null or undefined
+            assertParamExists('update', 'postId', postId)
+            // verify required parameter 'updatePostDto' is not null or undefined
+            assertParamExists('update', 'updatePostDto', updatePostDto)
+            const localVarPath = `/posts/{postId}`
+                .replace(`{${"postId"}}`, encodeURIComponent(String(postId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(updatePostDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -734,6 +795,18 @@ export const PostsApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.like(postId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
+        /**
+         * 
+         * @summary 
+         * @param {number} postId 
+         * @param {UpdatePostDto} updatePostDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async update(postId: number, updatePostDto: UpdatePostDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.update(postId, updatePostDto, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
     }
 };
 
@@ -793,6 +866,17 @@ export const PostsApiFactory = function (configuration?: Configuration, basePath
          */
         like(postId: number, options?: any): AxiosPromise<void> {
             return localVarFp.like(postId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary 
+         * @param {number} postId 
+         * @param {UpdatePostDto} updatePostDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        update(postId: number, updatePostDto: UpdatePostDto, options?: any): AxiosPromise<void> {
+            return localVarFp.update(postId, updatePostDto, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -862,6 +946,19 @@ export class PostsApi extends BaseAPI {
      */
     public like(postId: number, options?: AxiosRequestConfig) {
         return PostsApiFp(this.configuration).like(postId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary 
+     * @param {number} postId 
+     * @param {UpdatePostDto} updatePostDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PostsApi
+     */
+    public update(postId: number, updatePostDto: UpdatePostDto, options?: AxiosRequestConfig) {
+        return PostsApiFp(this.configuration).update(postId, updatePostDto, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

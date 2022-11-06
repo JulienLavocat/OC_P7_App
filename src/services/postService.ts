@@ -1,4 +1,4 @@
-import { Configuration, PostsApi } from "../api";
+import { Configuration, PostsApi, UpdatePostDto } from "../api";
 import { store } from "../store";
 import toastifyAsyncError from "../utils/toastifyAsyncError";
 
@@ -38,8 +38,20 @@ export class PostService {
 	}
 
 	static async dislike(postId: number) {
-		const res = await toastifyAsyncError(postsApi.dislike(postId));
+		const res = await toastifyAsyncError(
+			postsApi.dislike(postId, {
+				headers: this.getAuthHeaders(),
+			})
+		);
+		return res.data;
+	}
 
+	static async update(postId: number, dto: UpdatePostDto) {
+		const res = await toastifyAsyncError(
+			postsApi.update(postId, dto, {
+				headers: this.getAuthHeaders(),
+			})
+		);
 		return res.data;
 	}
 
