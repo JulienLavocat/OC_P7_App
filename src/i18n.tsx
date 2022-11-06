@@ -9,8 +9,10 @@ i18n
 	.use(LanguageDetector)
 	.use(initReactI18next)
 	.init({
-		fallbackLng: "en-US",
-		// debug: true,
+		load: "languageOnly",
+		detection: {
+			order: ["navigator"],
+		},
 		interpolation: {
 			escapeValue: false, // react already safes from xss
 		},

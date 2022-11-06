@@ -55,7 +55,7 @@ export default function EditPost({ post, refreshFeed }: EditPostProps) {
 						onClick={removePost}
 						loading={isDeleting}
 					>
-						Delete post
+						{t("editpost.delete")}
 					</Button>
 					<Button
 						color="primary"
@@ -66,7 +66,7 @@ export default function EditPost({ post, refreshFeed }: EditPostProps) {
 						disabled={buttonsDisabled}
 						loading={isEditing}
 					>
-						Edit post
+						{t("editpost.edit")}
 					</Button>
 				</div>
 			</form>

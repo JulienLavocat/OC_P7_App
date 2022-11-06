@@ -3,6 +3,10 @@
 		"send": "Send",
 		"placeholder": "What's on your mind ?"
 	},
+	"editpost": {
+		"edit": "Editer post",
+		"delete": "Delete post"
+	},
 	"login": {
 		"title": "Groupomania | Login",
 		"fields": {

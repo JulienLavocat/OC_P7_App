@@ -1,0 +1,44 @@
+{
+	"addpost": {
+		"send": "Envoyer",
+		"placeholder": "A quoi pensez-vous ?"
+	},
+	"editpost": {
+		"edit": "Editer le post",
+		"delete": "Supprimer le post"
+	},
+	"login": {
+		"title": "Groupomania | Connexion",
+		"fields": {
+			"email": "Email",
+			"password": "Mot de passe"
+		},
+		"submit": "Connexion",
+		"register": "Pas de compte ? S'inscrire",
+		"required": "{{field}} est requis"
+	},
+	"navbar": {
+		"logout": "Déconnexion"
+	},
+	"post": {
+		"date": {
+			"now": "Maintenant"
+		},
+		"action": {
+			"like": "J'aime",
+			"dislike": "Je n'aime pas"
+		}
+	},
+	"register": {
+		"title": "Groupomania | Inscription",
+		"fields": {
+			"email": "Email",
+			"password": "Mot de passe",
+			"firstName": "Prénom",
+			"lastName": "Nom"
+		},
+		"submit": "S'inscrire",
+		"register": "Vous avez déjà un compte ? Connexion",
+		"required": "{{field}} est requis"
+	}
+}
