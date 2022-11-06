@@ -1,6 +1,7 @@
 import React from "react";
 import { RouteObject, useRoutes } from "react-router-dom";
 import Login from "./components/modules/Login";
+import Logout from "./components/modules/Logout";
 import Profile from "./components/modules/Profile";
 import Register from "./components/modules/Register";
 import AppLayout from "./layouts/AppLayout";
@@ -19,6 +20,10 @@ const routes: RouteObject[] = [
 			{
 				path: "/auth/register",
 				element: <Register />,
+			},
+			{
+				path: "/auth/logout",
+				element: <Logout />,
 			},
 		],
 	},

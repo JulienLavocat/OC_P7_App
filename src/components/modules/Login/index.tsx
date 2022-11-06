@@ -28,12 +28,10 @@ export default function Login() {
 	});
 	const { t } = useTranslation();
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
 
 	const onSubmit = async (values: typeof formDefaults) => {
 		const response = await AuthService.login(values);
 		dispatch(setUser(response));
-		navigate("/");
 	};
 
 	const FormInput = ({ field, type = "text", max, min }: FormInputProps) => (

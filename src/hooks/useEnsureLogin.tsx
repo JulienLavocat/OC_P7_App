@@ -34,7 +34,7 @@ export default function useEnsureLogin() {
 			}
 		};
 
-		if (!user) verifyOrRedirect();
+		if (!user.loggedIn) verifyOrRedirect();
 
 		return () => {};
 	}, [user]);

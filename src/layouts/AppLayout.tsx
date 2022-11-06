@@ -7,8 +7,9 @@ import useEnsureLogin from "../hooks/useEnsureLogin";
 
 export default function AppLayout() {
 	const { isLoading } = useEnsureLogin();
+	const isLoggedIn = useAppSelector((state) => state.user.loggedIn);
 
-	if (isLoading) return <></>;
+	if (!isLoggedIn) return <></>;
 
 	return (
 		<>

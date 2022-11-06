@@ -3,15 +3,6 @@
 		"send": "Send",
 		"placeholder": "What's on your mind ?"
 	},
-	"post": {
-		"date": {
-			"now": "Now"
-		},
-		"action": {
-			"like": "Like",
-			"dislike": "Dislike"
-		}
-	},
 	"login": {
 		"title": "Groupomania | Login",
 		"fields": {
@@ -21,6 +12,18 @@
 		"submit": "Log in",
 		"register": "Need an account ? Register",
 		"required": "{{field}} is required"
+	},
+	"navbar": {
+		"logout": "Logout"
+	},
+	"post": {
+		"date": {
+			"now": "Now"
+		},
+		"action": {
+			"like": "Like",
+			"dislike": "Dislike"
+		}
 	},
 	"register": {
 		"title": "Groupomania | Register",
