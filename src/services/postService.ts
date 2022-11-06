@@ -12,9 +12,7 @@ export class PostService {
 	static async createPost(content?: string, image?: File) {
 		return await toastifyAsyncError(
 			postsApi.create(content, image, {
-				headers: {
-					Authorization: "Bearer " + store.getState().user?.token,
-				},
+				headers: this.getAuthHeaders(),
 			})
 		);
 	}
@@ -22,9 +20,7 @@ export class PostService {
 	static async getFeed() {
 		const res = await toastifyAsyncError(
 			postsApi.getFeed({
-				headers: {
-					Authorization: "Bearer " + store.getState().user?.token,
-				},
+				headers: this.getAuthHeaders(),
 			})
 		);
 
@@ -34,9 +30,7 @@ export class PostService {
 	static async like(postId: number) {
 		const res = await toastifyAsyncError(
 			postsApi.like(postId, {
-				headers: {
-					Authorization: "Bearer " + store.getState().user?.token,
-				},
+				headers: this.getAuthHeaders(),
 			})
 		);
 
@@ -44,14 +38,22 @@ export class PostService {
 	}
 
 	static async dislike(postId: number) {
-		const res = await toastifyAsyncError(
-			postsApi.dislike(postId, {
-				headers: {
-					Authorization: "Bearer " + store.getState().user?.token,
-				},
-			})
-		);
+		const res = await toastifyAsyncError(postsApi.dislike(postId));
 
 		return res.data;
+	}
+
+	static async delete(postId: number) {
+		const res = await toastifyAsyncError(
+			postsApi._delete(postId, {
+				headers: this.getAuthHeaders(),
+			})
+		);
+	}
+
+	private static getAuthHeaders() {
+		return {
+			Authorization: "Bearer " + store.getState().user?.token,
+		};
 	}
 }

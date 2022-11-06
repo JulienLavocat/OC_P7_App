@@ -1,32 +1,35 @@
 import { useState } from "react";
 import { Avatar, Button } from "react-daisyui";
 import { FaEllipsisH, FaRegThumbsUp, FaThumbsUp } from "react-icons/fa";
-import { Post as PostModel } from "../../../api";
+import { Post, Post as PostModel } from "../../../api";
 import { PostService } from "../../../services/postService";
 import formatDate from "../../../utils/formatDate";
 import TooltipButton from "../../elements/TooltipButton";
 
-export type PostProps = PostModel & {
+export type PostProps = {
+	post: PostModel;
 	hasManagementPermission: boolean;
-	onEdit: () => void;
-	userName: string;
-	userImage: string;
-	hasLiked: boolean;
+	onEdit: (post: Post) => void;
 };
 
-export default function Post({
-	content,
-	createdAt,
-	userName,
-	userImage,
-	userDisplayId,
-	likes,
-	hasLiked,
-	image,
-	id,
+export default function PostRenderer({
 	onEdit,
 	hasManagementPermission,
+	post,
 }: PostProps) {
+	const {
+		content,
+		createdAt,
+		hasLiked,
+		id,
+		image,
+		likes,
+		userDisplayId,
+		userId,
+		userImage,
+		userName,
+	} = post;
+
 	const [isLiked, setIsLiked] = useState(hasLiked);
 	const [likesCount, setLikesCount] = useState(likes);
 
@@ -69,7 +72,7 @@ export default function Post({
 						className="min-h-0 h-fit w-fit p-1"
 						color="ghost"
 						shape="circle"
-						onClick={onEdit}
+						onClick={() => onEdit(post)}
 					>
 						<FaEllipsisH size={22} className="opacity-70" />
 					</Button>
