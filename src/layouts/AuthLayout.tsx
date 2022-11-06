@@ -1,10 +1,9 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { useAppSelector } from "../hooks/useAppDispatch";
-import useEnsureLogin from "../hooks/useEnsureLogin";
 
 export default function AuthLayout() {
-	const user = useAppSelector((state) => state.user);
+	const user = useAppSelector((state) => state.user.loggedIn);
 	const navigate = useNavigate();
 	if (user) navigate("/");
 
