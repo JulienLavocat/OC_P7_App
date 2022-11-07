@@ -6,7 +6,7 @@
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc && vite build",
-		"serve": "serve dist",
+		"serve": "serve dist -l 5000",
 		"preview": "vite preview",
 		"codegen": "openapi-generator-cli generate -i http://localhost:3000/api-json -g typescript-axios -o src/api",
 		"format": "prettier \"src/**/*.{js,ts,tsx,jsx}\" --write ."
